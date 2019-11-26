@@ -2,6 +2,9 @@ package com.example.mvvnexample.dao;
 
 import com.example.mvvnexample.models.Note;
 
+import java.util.List;
+
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -23,5 +26,5 @@ public interface NoteDao {
     void deleteAll();
 
     @Query("SELECT * FROM note_table ORDER BY priority DESC")
-    void getAll();
+    LiveData<List<Note>> getAll();
 }
