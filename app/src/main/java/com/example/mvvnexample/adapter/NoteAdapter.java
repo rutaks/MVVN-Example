@@ -43,7 +43,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
         Note note = notes.get(position);
         holder.textViewTitle.setText(note.getTitle());
         holder.textViewDescription.setText(note.getDescription());
-        holder.textViewPriority.setText(note.getPriority());
+        holder.textViewPriority.setText(String.valueOf(note.getPriority()));
     }
 
     @Override
@@ -53,5 +53,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
 
     public void setNotes(List<Note> notes){
         this.notes = notes;
+        notifyDataSetChanged();
     }
 }
