@@ -23,12 +23,14 @@ public abstract class NoteDatabase extends RoomDatabase {
                    NoteDatabase.class,
                    "note_database")
                    .fallbackToDestructiveMigration()
+                   .addCallback(roomCallBack)
                    .build();
         }
         return instance;
     }
 
     private static RoomDatabase.Callback roomCallBack = new RoomDatabase.Callback(){
+        @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db){
             super.onCreate(db);
             new PopulateDbAsyncTask(instance).execute();
